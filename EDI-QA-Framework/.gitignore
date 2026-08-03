@@ -1,0 +1,38 @@
+# Maven build output
+target/
+*.class
+
+# Packaged artifacts
+*.jar
+*.war
+*.ear
+*.zip
+
+# IDE — IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# IDE — Eclipse
+.classpath
+.project
+.settings/
+.eclipse
+
+# IDE — VS Code
+.vscode/
+
+# Test output
+target/surefire-reports/
+target/extent-reports/
+target/logs/
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / local config
+*.env
+*.properties.local

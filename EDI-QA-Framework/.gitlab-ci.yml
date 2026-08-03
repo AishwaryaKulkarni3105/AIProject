@@ -1,0 +1,9 @@
+# GitLab CI/CD Pipeline — Placeholder
+# Full pipeline (build → test → Docker → deploy) to be implemented in a future step.
+
+stages:
+  - build
+  - test
+
+# TODO: define build job
+# TODO: define test job with mvn test + artifact upload for Extent Reports
