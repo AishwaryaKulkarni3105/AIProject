@@ -1,5 +1,8 @@
 package com.ediqa.api.tests;
 
+import com.ediqa.api.utils.ConfigManager;
+import com.ediqa.api.utils.ExtentRestAssuredFilter;
+import io.restassured.RestAssured;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeClass;
@@ -14,7 +17,8 @@ import static org.hamcrest.Matchers.notNullValue;
 /**
  * Smoke test that exercises the full stack: Maven → TestNG → REST Assured → Extent Reports.
  *
- * Target: https://jsonplaceholder.typicode.com/users (free, stable public mock API)
+ * The target base URL is resolved from {@code config/<environment>.properties}.
+ * Set the active environment via {@code -Denvironment=qa|prod} (default: qa).
  */
 public class GetUsersTest {
 
@@ -22,8 +26,10 @@ public class GetUsersTest {
 
     @BeforeClass
     public void setup() {
-        baseURI = "https://jsonplaceholder.typicode.com";
-        log.info("Base URI set to: {}", baseURI);
+        baseURI = ConfigManager.getInstance().getBaseUrl();
+        RestAssured.filters(new ExtentRestAssuredFilter());
+        log.info("Base URI set to: {} (environment: {})",
+            baseURI, ConfigManager.getInstance().getEnvironment());
     }
 
     @Test(description = "GET /users returns 200 with a non-empty JSON array of user objects")

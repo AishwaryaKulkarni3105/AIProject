@@ -27,6 +27,7 @@ out/
 target/surefire-reports/
 target/extent-reports/
 target/logs/
+reports/
 
 # OS artefacts
 .DS_Store
